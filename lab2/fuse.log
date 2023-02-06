@@ -1,0 +1,24 @@
+Running: C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -lib secureip -o C:/Users/hanxu/OneDrive/Desktop/lab2/tb_isim_beh.exe -prj C:/Users/hanxu/OneDrive/Desktop/lab2/tb_beh.prj work.tb work.glbl 
+ISim P.20131013 (signature 0x7708f090)
+Number of CPUs detected in this system: 1
+Turning on mult-threading, number of parallel sub-compilation jobs: 0 
+Determining compilation order of HDL files
+Analyzing Verilog file "C:/Users/hanxu/OneDrive/Desktop/lab2/signMagnitude.v" into library work
+Analyzing Verilog file "C:/Users/hanxu/OneDrive/Desktop/lab2/round.v" into library work
+Analyzing Verilog file "C:/Users/hanxu/OneDrive/Desktop/lab2/basicSToF.v" into library work
+Analyzing Verilog file "C:/Users/hanxu/OneDrive/Desktop/lab2/main.v" into library work
+Analyzing Verilog file "C:/Users/hanxu/OneDrive/Desktop/lab2/tb.v" into library work
+Analyzing Verilog file "C:/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v" into library work
+Starting static elaboration
+Completed static elaboration
+Compiling module signMagnitude
+Compiling module basicSToF
+Compiling module round
+Compiling module main
+Compiling module tb
+Compiling module glbl
+Time Resolution for simulation is 1ps.
+Compiled 6 Verilog Units
+Built simulation executable C:/Users/hanxu/OneDrive/Desktop/lab2/tb_isim_beh.exe
+Fuse Memory Usage: 28768 KB
+Fuse CPU Usage: 92 ms
