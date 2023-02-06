@@ -23,44 +23,44 @@ module basicSToF(input [11:0] sign_mag,
 						output reg[2:0] exponent,
 						output reg fifth_bit);
 	always @(*) begin
-		if(sign_mag[11] == 1) begin
+		if(sign_mag[10] == 1) begin
 			exponent = 7;
-			significand = sign_mag[11:8];
-			fifth_bit = sign_mag[7];
-		end
-		else if(sign_mag[10] == 1) begin
-			exponent = 6;
 			significand = sign_mag[10:7];
 			fifth_bit = sign_mag[6];
 		end
 		else if(sign_mag[9] == 1) begin
-			exponent = 5;
+			exponent = 6;
 			significand = sign_mag[9:6];
 			fifth_bit = sign_mag[5];
 		end
 		else if(sign_mag[8] == 1) begin
-			exponent = 4;
-			significand = sign_mag[8:5];
-			fifth_bit = sign_mag[4];
+			exponent = 5;
+			significand = sign_mag[9:6];
+			fifth_bit = sign_mag[5];
 		end
 		else if(sign_mag[7] == 1) begin
-			exponent = 3;
+			exponent = 4;
 			significand = sign_mag[7:4];
 			fifth_bit = sign_mag[3];
 		end
 		else if(sign_mag[6] == 1) begin
-			exponent = 2;
+			exponent = 3;
 			significand = sign_mag[6:3];
 			fifth_bit = sign_mag[2];
 		end
 		else if(sign_mag[5] == 1) begin
-			exponent = 1;
-			significand = sign_mag[5:2];
+			exponent = 2;
+			significand = sign_mag[5:3];
 			fifth_bit = sign_mag[1];
+		end
+		else if(sign_mag[4] == 1) begin
+			exponent = 1;
+			significand = sign_mag[4:1];
+			fifth_bit = sign_mag[0];
 		end
 		else begin
 			exponent = 0;
-			significand = sign_mag[4:0];
+			significand = sign_mag[3:0];
 			fifth_bit = 0;
 		end
 	end
