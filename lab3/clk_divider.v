@@ -21,11 +21,11 @@
 
 //consult the Digilent tutorial on clk divider for more details https://learn.digilentinc.com/Documents/262
 module clk_divider(input clk,
-						input rst,
-						output reg clk_1hz,
-						output reg clk_2hz,
-						output reg clk_4hz,
-						output reg clk_1khz);
+					input rst,
+					output reg clk_1hz,
+					output reg clk_2hz,
+					output reg clk_4hz,
+					output reg clk_1khz);
 
 	localparam onehz_divisor = 50_000_000; //divisor logic: the clk is 100Mhz, 1hz = flip bit every 50000000 times the clk changes value.
 	localparam twohz_divisor = 25_000_000;
@@ -48,7 +48,7 @@ module clk_divider(input clk,
 		end
 		else begin //otherwise just increment the counter
 			onehz_counter <= onehz_counter + 1;
-			clk_1hz = clk_1hz;
+			clk_1hz <= clk_1hz;
 		end
 	end
 	
@@ -63,7 +63,7 @@ module clk_divider(input clk,
 		end
 		else begin
 			twohz_counter <= twohz_counter + 1;
-			clk_2hz = clk_2hz;
+			clk_2hz <= clk_2hz;
 		end
 	end
 	
@@ -78,7 +78,7 @@ module clk_divider(input clk,
 		end
 		else begin
 			fourhz_counter <= fourhz_counter + 1;
-			clk_4hz = clk_4hz;
+			clk_4hz <= clk_4hz;
 		end
 	end
 	
@@ -93,7 +93,7 @@ module clk_divider(input clk,
 		end
 		else begin
 			onekhz_counter <= onekhz_counter + 1;
-			clk_1khz = clk_1khz;
+			clk_1khz <= clk_1khz;
 		end
 	end
 

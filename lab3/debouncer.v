@@ -19,11 +19,8 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 module debouncer(input clk,
-						input button,
-						output debounce_btn);
-	
-	reg clean_btn = 0;
-	assign debounce_btn = clean_btn;
+				input button,
+				output reg debounce_btn);
 	
 	reg[15:0] counter;
 	
@@ -32,12 +29,12 @@ module debouncer(input clk,
 				counter <= counter + 1;
 				
 				if(counter == 16'hffff) begin //if counter reaches the max value, it means the button has been pressed for a while.
-					clean_btn <= 1;
+					debounce_btn <= 1;
 					counter <= 0;
 				end
 			end
 			else begin //otherwise reset the counter
-				clean_btn <= 0;
+				debounce_btn <= 0;
 				counter <= 0;
 			end
 	end

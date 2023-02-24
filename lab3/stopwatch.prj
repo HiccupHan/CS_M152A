@@ -1,0 +1,5 @@
+verilog work "seven_seg.v"
+verilog work "debouncer.v"
+verilog work "counter.v"
+verilog work "clk_divider.v"
+verilog work "stopwatch.v"
