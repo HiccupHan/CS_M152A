@@ -23,13 +23,16 @@
 module clk_divider(input clk,
 						input rst,
 						output reg clk_1hz,
-						output reg clk_tfMhz);
+						output reg clk_tfMhz,
+						output reg clk_slowhz);
 
 	localparam onehz_divisor = 50_000_000; //divisor logic: the clk is 100Mhz, 1hz = flip bit every 50000000 times the clk changes value.
-	localparam tfmhz_divisor = 2; //1khz for seven seg display
+	localparam tfmhz_divisor = 50_000; //1khz for seven seg display
+	localparam slowhz_divisor = 1_000_000; //1khz for seven seg display
 	
 	reg[31:0] onehz_counter;;
 	reg[31:0] tfmhz_counter;
+	reg[31:0] slowhz_counter;
 	
 	always @ (posedge(clk) or posedge(rst)) begin //handles 1hz clk
 		if(rst == 1'b1) begin //if reset then reset the values
@@ -61,4 +64,18 @@ module clk_divider(input clk,
 		end
 	end
 
+	always @ (posedge(clk) or posedge(rst)) begin //handles display 1khz clk
+		if(rst == 1'b1) begin
+			slowhz_counter <= 32'b0;
+			clk_slowhz <= 1'b0;
+ 		end
+		else if(slowhz_counter == slowhz_divisor - 1) begin
+			slowhz_counter <= 32'b0;
+			clk_slowhz <= ~clk_slowhz;
+		end
+		else begin
+			slowhz_counter <= slowhz_counter + 1;
+			clk_slowhz <= clk_slowhz;
+		end
+	end
 endmodule

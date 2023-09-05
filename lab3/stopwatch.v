@@ -90,37 +90,57 @@ module stopwatch(input clk,
 				if(anode == 0) begin
 					an <= 4'b1011;
 					anode <= anode + 1;
-					if(clk_display)
+					if(clk_blinkAdj)
 						seven_seg <= blink_seg;
 					else
 						seven_seg <= min_second_seg;
 				end
-				else begin
+				else if(anode == 1) begin
 					an <= 4'b0111;
-					anode <= 0;
-					if(clk_display)
+					anode <= anode + 1;
+					if(clk_blinkAdj)
 						seven_seg <= blink_seg;
 					else
 						seven_seg <= min_first_seg;
+				end
+				else if (anode == 2) begin
+				an <= 4'b1110;
+				seven_seg <= sec_second_seg;
+				anode <= anode + 1;
+				end
+				else begin
+					an <= 4'b1101;
+					seven_seg <= sec_first_seg;
+					anode <= 0;
 				end
 			end
 			else begin
 				if(anode == 0) begin
 					an <= 4'b1110;
 					anode <= anode + 1;
-					if(clk_display)
+					if(clk_blinkAdj)
 						seven_seg <= blink_seg;
 					else
 						seven_seg <= sec_second_seg;
 				end
-				else begin
+				else if(anode == 1) begin
 					an <= 4'b1101;
-					anode <= 0;
-					if(clk_display)
+					anode <= anode + 1;
+					if(clk_blinkAdj)
 						seven_seg <= blink_seg;
 					else
 						seven_seg <= sec_first_seg;
 				end
+				else if (anode == 2) begin
+					an <= 4'b1011;
+					seven_seg <= min_second_seg;
+					anode <= anode + 1;
+				end
+			else begin
+				an <= 4'b0111;
+				seven_seg <= min_first_seg;
+				anode <= 0;
+			end
 			end
 		end
 	end
